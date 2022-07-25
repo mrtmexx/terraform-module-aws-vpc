@@ -5,7 +5,7 @@ variable "region" {
 variable "environment" {
   type = object({
     short = string
-    full = string
+    full  = string
   })
 }
 
@@ -26,6 +26,16 @@ variable "local_subnets" {
 }
 
 variable "single_nat_gateway" {
-  type = bool
+  type    = bool
   default = true
+}
+
+variable "public_subnet_tags" {
+  type    = map(string)
+  default = {}
+}
+
+variable "private_subnet_tags" {
+  type    = map(string)
+  default = {}
 }
