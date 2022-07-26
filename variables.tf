@@ -19,6 +19,7 @@ variable "public_subnets" {
 
 variable "private_subnets" {
   type = map(string)
+  default = {}
 }
 
 variable "local_subnets" {
