@@ -3,7 +3,7 @@ locals {
   max_subnet_length = max(
     length(var.private_subnets),
   )
-  nat_gateway_count = var.single_nat_gateway ? 1 : local.max_subnet_length
+  nat_gateway_count = length(var.private_subnets) > 0 ? (var.single_nat_gateway ? 1 : local.max_subnet_length) : 0
   nat_zones         = toset(slice(keys(var.private_subnets), 0, local.nat_gateway_count))
 
   tags = {
