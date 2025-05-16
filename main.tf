@@ -16,7 +16,6 @@ resource "aws_vpc" "vpc" {
   cidr_block                       = var.vpc_cidr
   instance_tenancy                 = "default"
   assign_generated_ipv6_cidr_block = "false"
-  enable_classiclink               = "false"
   tags = merge(
     {
       Name = title(var.environment.short)
@@ -86,7 +85,7 @@ resource "aws_route_table_association" "public" {
 resource "aws_eip" "nat" {
   for_each = local.nat_zones
 
-  vpc = true
+  domain = "vpc"
   tags = merge(
     {
       Name = "${title(var.environment.short)}-NAT-IP-${title(each.key)}"
