@@ -24,3 +24,11 @@ output "private_route_table_id" {
       t.id
   ]
 }
+
+output "public_route_table_id" {
+  value = aws_route_table.public.id
+}
+
+output "local_route_table_id" {
+  value = aws_route_table.local.id
+}
